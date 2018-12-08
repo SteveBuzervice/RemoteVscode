@@ -30,23 +30,30 @@ a X icon should be at the Task menu.
 
 On Linux side: (Centos 7) 
 ======
+Install xauth 
+```bash
+   sudo yum install -y xorg-x11-xauth
+   xauth list
+``` 
+1. This will allow the remote system to connecting the Xserver you have installed on you local PC
+
 Install vscode 
-1. import the pgp key `sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc` 
-2. download the repo 
+2. import the pgp key `sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc` 
+3. download the repo 
 ```bash
  sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo' 
  ```
-3. check update and install vscode
+4. check update and install vscode
 ```bash
-    yum check-update
+    sudo yum check-update
     sudo yum install code
 ```
-4. To prevent strange characters appears. We will need to install true type fonts.
+5. To prevent strange characters appears. We will need to install true type fonts.
 ```bash
    yum install curl cabextract xorg-x11-font-utils fontconfig
    yum install https://downloads.sourceforge.net/project/mscorefonts2/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
 ```
-5. On Linux Host,
+6. On Linux Host,
     ```bash 
     sudo vi /etc/ssh/sshd_config 
     X11Forwarding yes
